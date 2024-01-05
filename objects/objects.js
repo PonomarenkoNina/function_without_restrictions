@@ -29,6 +29,7 @@ var fiat = {
 };
 // Accessing a property
 // fiat.mileage
+
 var miles = fiat.mileage;
 if (miles < 2000) {
   buyIt();
