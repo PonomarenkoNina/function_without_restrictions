@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Typeof</title>
+  </head>
+  <body>
+    <h1>Оператор typeof вбудований в JavaScript</h1>
+    <p>Використовується для перевірки типу операнда</p>
+    <script>
+      var subject = "Just a string";
+      //оператор typeof отримує операнд і визначає його тип
+      var probe = typeof subject;
+      console.log(probe); //console JS - stringи
+
+      var test1 = "abcdef";
+      console.log(typeof test1); //console JS - string
+      var test2 = 123;
+      console.log(typeof test2); //numder
+      var test3 = true;
+      console.log(typeof test3); //boolean
+      var test4 = {};
+      console.log(typeof test4); //object
+      var test5 = [];
+      console.log(typeof test5); //object
+      var test6;
+      console.log(typeof test6); //undefined
+      var test7 = { abcdef: 123 };
+      console.log(typeof test7); //object
+      var test8 = ["abcdef", 123];
+      console.log(typeof test8); //object
+      function test9() {
+        return "abcdef";
+      }
+      console.log(typeof test9); //function
+      var test10 = null;
+      console.log(typeof test10); //object
+      var test11 = undefined;
+      console.log(typeof test11); //undefined
+      var test12 = 0;
+      console.log(typeof test12); //numder
+      var test13 = -2;
+      console.log(typeof test13); //numder
+    </script>
+  </body>
+</html>
