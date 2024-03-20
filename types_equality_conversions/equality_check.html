@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Equality check</title>
+  </head>
+  <body>
+    <h2>Як перевірити два об'єкти на рівність</h2>
+    <h3>
+      Якщо обидва операнди є об'єктами, можемо використовувати як ==, так і ===,
+      тому що вони працюють абсолютно однаково
+    </h3>
+    <ul>
+      <li>
+        Під час перевірки рівності двох об'єктних змінних порівнюються посилання
+        на ці об'єкти
+      </li>
+      <li>
+        Два посилання дорівнюють лише в тому випадку, якщо вони посилаються на
+        один об'єкт
+      </li>
+    </ul>
+
+    <script>
+      //Пошук машин на стоянці.
+      //Проаналізувати код та записати значення змінних loc1-loc4
+      function findCarInLot(car) {
+        //виклик функції пошуку машини car в масиві lot i порівнюємо її з переданою машиною
+        for (var i = 0; i < lot.length; i++) {
+          if (car === lot[i]) {
+            return i; //якщо знайдено - повертаємо її індекс у масиві
+          }
+        }
+        return -1; //якщо не знайдена - повертаємо -1
+      }
+      //Об'єкти, які представляють різні машини з різними властивостями
+      var chevy = {
+        make: "Chevy",
+        model: "Bel Air",
+      };
+      var taxi = {
+        make: "Webville Motors",
+        model: "Taxi",
+      };
+      var fiat1 = {
+        make: "Fiat",
+        model: "500",
+      };
+      var fiat2 = {
+        make: "Fiat",
+        model: "500",
+      };
+      //Масив lot, який містить всі ці об'єкти
+      var lot = [chevy, taxi, fiat1, fiat2];
+      console.log(lot);
+      //Звертаємось до функції findCarInLot з нашими аргументами і записуємо в змінні, які виводяться в консоль для перевірки
+      var loc1 = findCarInLot(fiat2); //loc1 повертає 3, оскільки fiat2 є четвертим елементом у масиві lot
+      console.log(loc1);
+      var loc2 = findCarInLot(taxi); //loc2 повертає 1, оскільки taxi є другим елементом у масиві lot
+      console.log(loc2);
+      var loc3 = findCarInLot(chevy); //loc3 повертає 0, оскільки chevy є першим елементом у масиві lot
+      console.log(loc3);
+      var loc4 = findCarInLot(fiat1); //loc4 повертає 2, оскільки fiat1 є третім елементом у масиві lot
+      console.log(loc4);
+    </script>
+  </body>
+</html>

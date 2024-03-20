@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Instanceof operator</title>
+  </head>
+  <body>
+    <h2>Instanceof operator</h2>
+    <ul>
+      <li></li>
+    </ul>
+
+    <script>
+      function Duck(sound) {
+        this.sound = sound;
+        this.quack = function () {
+          console.log(this.sound);
+        };
+      }
+
+      var toy = new Duck("quack quack");
+
+      toy.quack();
+
+      console.log(typeof toy);
+      console.log(toy instanceof Duck);
+      //Console JS:
+      //quack quack - toy працює як об'єкт...ми можемо викликати метод
+      //object - виводиться тип object
+      //true - програма каже, що об'єкт "є екземпляром" Duck
+    </script>
+  </body>
+</html>

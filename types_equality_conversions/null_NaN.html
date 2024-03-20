@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Null and NaN</title>
+  </head>
+  <body>
+    <h1>Як використовувати null</h1>
+    <p>
+      Часто буває потрібно впевнетись в тому, що ми отрумуємо повноцінний
+      обьєкт, а не null - на випадок коли функція не змогла знайти або створити
+      обьєкт, який повертається
+    </p>
+    <p>
+      Значение NaN не равно ничему, даже самому себе, значит, любые проверки
+      равенства с NaN исключаются!!!
+    </p>
+    <script>
+      var header = document.getElementById("header");
+      if (header == null) {
+        //Заголовка не має - якась проблема!
+      }
+
+      var weather = document.getElementById("weatherDiv");
+      if (weather !== null) {
+        //Створення вмісту для погодного віджету
+      }
+
+      //Помилка - консоль - myNum is not defined
+      if (myNum == NaN) {
+        myNum = 0;
+      }
+      //Правильно, функція isNaN повертає true, якщо передане їй значення не є числом
+      if (isNaN(myNum)) {
+        myNum = 0;
+      }
+
+      var test11 = 0 / 0;
+      console.log(typeof test11);
+      //console JS - number
+
+      var test12 = 10 / 0;
+      console.log(typeof test12);
+      //отримаємо значення Infinity
+
+      //перевірка на Infinity
+      if (tamale == Infinity) {
+        alert("That's a big tamale!");
+      }
+
+      var test10 = null;
+      console.log(typeof test10); //object
+      //null використовується для представлення відсутніх обьєктів
+    </script>
+  </body>
+</html>

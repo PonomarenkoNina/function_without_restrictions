@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Methods and properties of string</title>
+  </head>
+  <body>
+    <h2>Methods and properties of string</h2>
+    <ul>
+      <li>
+        Властивість length містить кількість символів у рядку. Його зручно
+        використовувати під час перебору символів рядка. А метод charAt отримує
+        символ з конкретним індексом у рядку.
+      </li>
+      <li>
+        Метод indexOf отримує рядок-аргумент та повертає індекс першого символу
+        першого входження аргументу у своєму рядку.
+      </li>
+      <li>
+        Метод substring отримує два індекси, після чого витягує та повертає
+        укладений між ними рядок.
+      </li>
+      <li>
+        Метод split отримує символ-обмежувач та розбиває рядок на частини за
+        позицією обмежувача.
+      </li>
+      <li>
+        Існує ще багато методів: toLowerCase, toUpperCase, concat, replace,
+        slice, substring, match, trim, lastIndexOf
+      </li>
+    </ul>
+
+    <script>
+      //Властивість length та метод charAt
+      var input = "jenny@wickedlysmart.com";
+      for (var i = 0; i < input.length; i++) {
+        if (input.charAt(i) === "@") {
+          console.log("There's an @ sign at index " + i); //There's an @ sign at index 5
+        }
+      }
+      //Метод indexOf
+      var phrase = "the cat in the hat";
+
+      var index = phrase.indexOf("cat");
+      console.log("there's a cat sitting at index " + index); //There's a cat sitting at index 4
+
+      index = phrase.indexOf("the", 5);
+      console.log("there's a the sitting at index " + index); //There's a the sitting at index 11
+
+      index = phrase.indexOf("dog");
+      console.log("there's a dog sitting at index " + index); //There's a dog sitting at index -1
+
+      //Метод substring
+      var data = "name|phone|address";
+      var val = data.substring(5, 10);
+      console.log("Substring is " + val); //Substring is phone
+
+      val = data.substring(5);
+      console.log("Substring is now " + val); //Substring is phone|address
+
+      //Метод split
+      var data = "name|phone|address";
+      var vals = data.split("|");
+      console.log("Split array is ", vals); //Split array is ["name", "phone", "address"]
+
+      //Знання типів. Специфікація: Отримати номер телефона у вигляді "123-4567" і написати код, який буде приймати чи відкидати його,
+      //щоб телефон був прийнятий, він повинен складатись із семи цифр 0-9, розділених дефісом
+
+      //Варіант 1
+      //1-за допомогою властивості length взнаємо скільки символів вміщає строка
+      //2-метод charAt перевіряє кожний символ строки, символ з індексом 3 це дефіс
+      //3-перевіряємо, що кожний символ з індексами 0-2 і 4-6 вміщує цифру
+      function validate(phoneNumder) {
+        if (phoneNumder.length !== 8) {
+          return false;
+        }
+        for (var i = 0; i < phoneNumder.length; i++) {
+          if (i === 3) {
+            if (phoneNumder.charAt(i) !== "-") {
+              return false;
+            }
+          } else if (isNaN(phoneNumder.charAt(i))) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      //Варіант 2
+      //1-як і в першому варіанті
+      //2-метод substring створює строку, яка вміщує символи з 0 по 3 і другу підстроку починаючи з індексу 4 до кінця строки
+      //3-перевіряємо всі критерії правильності телефону та перетворення типів: строки в число за допомогою функції isNaN
+      function validate(phoneNumder) {
+        if (phoneNumder.length !== 8) {
+          return false;
+          var first = phoneNumder.substring(0, 3);
+          var second = phoneNumder.substring(4);
+          if (phoneNumder.charAt(3) !== "-" || isNaN(first) || isNaN(second)) {
+            return false;
+          }
+          return true;
+        }
+      }
+
+      //Специфікація змінилась: Все тіж умови: отримати номер телефона у вигляді "123-4567" і написати код, який буде приймати чи відкидати його,
+      //як і в попередній умові, щоб телефон був прийнятий, він повинен складатись із семи цифр 0-9, але, які можуть розділятись дефісом
+
+      //Варіант 1
+      //Більшу частину існуючого коду можна використати повторно
+      //Необхідно лише розібратися з особливим випадком - можливим відсутністю дефісу в номері.
+      //Телефон складається або лише з семи цифр, або з восьми з дефісом у третій позиції.
+      function validate(phoneNumder) {
+        if (phoneNumder.length > 8 || phoneNumder.length < 7) {
+          return false;
+        }
+        for (var i = 0; i < phoneNumder.length; i++) {
+          if (i === 3) {
+            if (phoneNumder.length === 8 && phoneNumder.charAt(i) !== "-") {
+              return false;
+            }
+          } else if (phoneNumder.length === 7 && isNaN(phoneNumder.charAt(i))) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      //Варіант 2
+      //Тут же просто визначаємо другу частину числа за довжиною телефонного номера без 4 (початкова точка підрядка)
+      //замість жорстко фіксувати початкову позицію за наявності дефіса
+      function validate(phoneNumder) {
+        if (phoneNumder.length > 8 || phoneNumder.length < 7) {
+          return false;
+        }
+        var first = phoneNumder.substring(0, 3);
+        var second = phoneNumder.substring(phoneNumder.length - 4);
+
+        if (isNaN(first) || isNaN(second)) {
+          return false;
+        }
+        if (phoneNumder.length === 8) {
+          return phoneNumder.charAt(3) === "-";
+        }
+        return true;
+      }
+      //В другому варіанті код читається краще ніж в першому і з супроводженням не буде проблем
+      function validate(phoneNumder) {
+        return phoneNumder.match(/^\d{3}-?\{4}$/);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pseudotruth and pseudofalse</title>
+  </head>
+  <body>
+    <h2>
+      В JavaScript "псевдоістина" і "псевдоложь" поняття розмиті: існують
+      значення, які не є ні true, ні false, але при цьому інтерпретуються як
+      true або false в умовних виразах.
+    </h2>
+    <h2>Псевдоложні поняття</h2>
+    <ul>
+      <li>undefined</li>
+      <li>null</li>
+      <li>0</li>
+      <li>порожня строка</li>
+      <li>NaN</li>
+    </ul>
+
+    <script>
+      //Псевдоложні значення
+      var testThis;
+      if (testThis) {
+        //буде працювать
+      }
+
+      var element = document.getElementById("elementThatDoesntExist");
+      if (element) {
+        //element = null
+      }
+
+      if (0) {
+        // ...
+      }
+
+      if ("") {
+        //Цей код колись буде виконано?
+      }
+
+      if (NaN) {
+        //а що NaN робить у логічній умові?
+      }
+
+      //Псевдоістинні значення
+      if ([]) {
+        //буде виконуватись, бо це масив
+      }
+
+      var element = document.getElementById("elementThatDoesExist");
+      if (element) {
+        //буде виконуватись, бо елемент псевдоістинний
+      }
+
+      if (1) {
+        //буде виконуватись, бо тільки значення 0 - псевдоложне, інші - псевдоістинні
+      }
+
+      var string = "mercy me";
+      if (string) {
+        //буде виконуватись, бо тільки порожня строка псевдоложна
+      }
+
+      //Exersise
+      function lieDetectorTest() {
+        var lies = 0;
+
+        var stolenDiamond = {}; //псевдоістина - навіть пустий обєкт
+        if (stolenDiamond) {
+          console.log("You stole the diamond");
+          lies++;
+        }
+        var car = {
+          keysInPocket: null, //псевдоложь
+        };
+        if (car.keysInPocket) {
+          console.log("Uh oh, guess you stole the car!");
+          lies++;
+        }
+        if (car.emptyGasTank) {
+          //псевдоложь - undefined
+          console.log("You drove the car after you stole it!");
+          lies++;
+        }
+        var foundYouAtTheCrimeScene = [];
+        if (foundYouAtTheCrimeScene) {
+          //псевдоістина - навіть пустий масив
+          console.log("A sure sign of guilt");
+          lies++;
+        }
+        if (foundYouAtTheCrimeScene[0]) {
+          //псевдоложь - елемент з індексом 0 - undefined
+          console.log("Caught with a stolen item!");
+          lies++;
+        }
+        var yourName = " "; //пробіл - це непуста строка - псевдоістина
+        if (yourName) {
+          console.log("Guess you lied about your name");
+          lies++;
+        }
+        return lies;
+      }
+
+      var numberOfLies = lieDetectorTest();
+      console.log("You told" + numberOfLies + "lies!");
+      if (numberOfLies >= 3) {
+        console.log("Guilty as charget");
+      }
+      //Визначте, скільки хибних відповідей дав підозрюваний - 3
+      //а також чи винний він за пред'явленими звинуваченнями (три і більше хибні відповіді) - винний
+
+      //Що робить цей код?
+      var text = "YOU SHOULD NEVER SHOUT WHEN TYPING";
+      var presentableText = text.toLowerCase();
+      if (presentableText.length > 0) {
+        alert(presentableText);
+      }
+      //цей код перетворює текс в нижній регістр всі символи і виводить його вже маленькими літерами
+
+      //СТРОКИ: примитивні типи (прості) або об'єкти (володіють станом та поведінкою - властивості і методи)
+      var emot = "XOxxOO"; // примітивна строка
+      var hugs = 0;
+      var kisses = 0;
+
+      emot = emot.trim(); //виклик метолу для строки
+      emot = emot.toUpperCase();
+
+      for (var i = 0; i < emot.length; i++) {
+        //строка з властивістю length
+        if (emot.charAt(i) === "X") {
+          hugs++;
+        } else if (emot.charAt(i) == "O") {
+          //знов метод charAt
+          kisses++;
+        }
+      }
+
+      //Строки-примітив та строки-об'єкт
+      //Створюємо три примітивні строки
+      var name = "Jenny";
+      var phone = "867-5309";
+      var fact = "This is a prime number";
+
+      var songName = phone + "/" + name; //Строки об'єднуються - конкатенація
+
+      var index = phone.indexOf("-"); //Викликається метод indexOf і перетворює phone в строку-об'єкт
+      if (fact.substring(10, 15) === "prime") {
+        //Строка fact тимчасово перетворюється в об'єкт
+        alert(fact); //Строка fact (повернення примітивної строки)
+      }
+    </script>
+  </body>
+</html>
