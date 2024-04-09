@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ticer</title>
+    <script>
+      var tick = true;
+      function ticker() {
+        if (tick) {
+          console.log("Tick");
+          tick = false;
+        } else {
+          console.log("Tock");
+          tick = true;
+        }
+      }
+      setInterval(ticker, 1000);
+      //Зупинка таймеру
+      var t = setInterval(ticker, 1000);
+      clearInterval(t);
+      //Console JS:
+      //Tick
+      //Tock
+      //Tick
+      //Tock
+      //Tick
+      //Tock
+      //Tick
+      //Tock
+    </script>
+  </head>
+  <body>
+    <h1>
+      Як і setTimeout, функція setInterval отримує два аргументи:
+      функцію-обробник події та проміжок часу.
+    </h1>
+    <h2>
+      Але, на відміну від setTimeout, функція setInterval виконує обробник
+      кілька разів... А точніше, нескінченно багато разів! (Звичайно, можно
+      наказати їй зупинитися). У цьому прикладі кожні 1000 мілісекунд (1
+      секунда) функція setInterval викликає обробник ticker. Обробник перевіряє
+      значення змінної tick та визначає, чи потрібно вивести на консоль
+      повідомлення “Tick” або “Tock”.
+    </h2>
+    <h2>
+      Отже, setInterval генерує подію під час спрацьовування таймера, а потім
+      перезапускає таймер.
+    </h2>
+  </body>
+</html>

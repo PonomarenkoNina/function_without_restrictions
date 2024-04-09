@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timer Handler</title>
+    <script>
+      function timerHandler() {
+        alert(
+          "Hey what are you doing sitting there staring at a blank screen?"
+        );
+      }
+      setTimeout(timerHandler, 5000);
+    </script>
+  </head>
+  <body>
+    <ul>
+      Як працює setTimeout:
+    </ul>
+    <li>
+      при завантаженні сторінки ми виконуємо дві операції: призначаємо обробник
+      з ім'ям timerHandler і викликаємо функцію setTimeout для створення події
+      таймера, яка буде згенерована через 5000 мілісекунд. Коли спрацює подія
+      таймера, обробник буде виконано
+    </li>
+    <li>
+      поки таймер відраховує мілісекунди, браузер продовжує працювати як завжди.
+    </li>
+    <li>коли відлік часу сягає нуля, браузер викликає обробник</li>
+    <li>
+      викликаний обробник створює повідомлення та виводить його у браузері.
+    </li>
+  </body>
+</html>

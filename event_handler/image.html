@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Guess</title>
+    <style>
+      body {
+        margin: 20px;
+      }
+      img {
+        margin: 20px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        //Вибірка елементів по імені тега img, результат зберігається в images, перебор всіх зображень і призначення обробника подій клацання кожному зображенню
+        var images = document.getElementsByTagName("img");
+        for (var i = 0; i < images.length; i++) {
+          images[i].onmouseover = showAnswer;
+          images[i].onmouseout = reblur; //Функція reblur призначається обробником події mouseout (замість події таймера). Для цього вона призначається властивістю на об'ємі зображення
+        }
+      };
+      //Подія клацання для якого створюється об'єкт події, який передається обробнику події
+      function showAnswer(eventObj) {
+        var image = eventObj.target; //Властивість об'єкта події містить посилання на елемент, на якому було зроблено клацання.
+        //Ідентифікатор кожного зображення відповідає імені нормальної версії зображення (якщо відкинути розширення ".jpg"), заміна властивості src елемента
+        var name = image.id;
+        name = name + ".jpg";
+        image.src = name;
+      }
+      //reblur використовується як обробник події mouseout, для отримання зображення, яке слід розмити, необхідно використовувати об'єкт події. Як і у випадку з showAnswer, для отримання об'єкта буде використано властивість target
+      function reblur(eventObj) {
+        var image = eventObj.target;
+        var name = image.id;
+        name = name + "blur.jpg";
+        image.src = name;
+      }
+    </script>
+  </head>
+  <body>
+    <img id="zero" src="zeroblur.jpg" />
+    <img id="one" src="oneblur.jpg" />
+    <img id="two" src="twoblur.jpg" />
+    <img id="three" src="threeblur.jpg" />
+    <img id="four" src="fourblur.jpg" />
+    <img id="five" src="fiveblur.jpg" />
+  </body>
+</html>
