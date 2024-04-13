@@ -5,13 +5,38 @@
     <title>First class function</title>
     <script>
       //Структура даних, яка описує пасажирів авіарейсу
-      //Кожний пасажир є об'єктом з властивостями name і paid
+      //Кожний пасажир є об'єктом з властивостями name(строка) і paid(булевське значення-є оплата чи ні)
       var passengers = [
         { name: "Jane Doloop", paid: true },
         { name: "Dr. Evel", paid: true },
         { name: "Sue Property", paid: false },
         { name: "John Funcall", paid: true },
       ];
+      //Функції для перевірки пасажирів: "чорний список", "перевірка оплати", "спісок всіх пасажирів"
+      function checkPaid(passengers) {
+        for (var i = 0; i < passengers.length; i++) {
+          if (!passengers[i].paid) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function checkNoFly(passengers) {
+        for (var i = 0; i < passengers.length; i++) {
+          if (onNoFlyList(passengers[i].name)) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function printPassengers(passengers) {
+        for (var i = 0; i < passengers.length; i++) {
+          console.log(passengers[i].name);
+        }
+        return true;
+      }
     </script>
   </head>
   <body>
