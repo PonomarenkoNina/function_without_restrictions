@@ -58,6 +58,19 @@
       function checkNotPaid(passenger) {
         return !passenger.paid;
       }
+
+      //Є функція, яка готова отримати в аргументі іншу функцію (processPassengers), а також дві функції,
+      //готові до передачі в аргументах processPassengers (checkNoFlyList і checkNotPaid).
+      var allCanFly = processPassengers(passengers, checkNoFlyList);
+      if (!allCanFly) {
+        console.log(
+          "The plane can't take off: we have a passenger on the no-fly-list."
+        );
+      }
+      var allPaid = processPassengers(passengers, checkNotPaid);
+      if (!allPaid) {
+        console.log("The plane can't take off: not everyone has paid.");
+      }
     </script>
   </head>
   <body>
