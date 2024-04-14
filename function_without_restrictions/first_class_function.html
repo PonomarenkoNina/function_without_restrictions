@@ -37,6 +37,21 @@
         }
         return true;
       }
+
+      //Напишіть функцію, яка отримує об'єкт пасажира і чи не заборгував він за квиток.
+      //Функція повертає true, якщо пасажир не заплатив або false у протилежному випадку.
+      function checkNoFlyList(passengers) {
+        var name = passengers("Dr. Evel");
+        alert(name);
+      }
+
+      function checkNotPaid(passengers) {
+        if (!passengers.paid) {
+          return true;
+        }
+        return false;
+      }
+      checkNoFlyList(checkNotPaid);
     </script>
   </head>
   <body>
