@@ -40,18 +40,24 @@
 
       //Напишіть функцію, яка отримує об'єкт пасажира і чи не заборгував він за квиток.
       //Функція повертає true, якщо пасажир не заплатив або false у протилежному випадку.
-      function checkNoFlyList(passengers) {
-        var name = passengers("Dr. Evel");
-        alert(name);
+      //Нам потрібна функція, яка отримує список пасажирів, та інша функція,
+      //яка вміє перевіряти окремого пасажира за заданою умовою (наприклад, присутність пасажира у «чорному списку»)
+      function processPassengers(passengers, testFunction) {
+        for (var i = 0; i < passengers.length; i++) {
+          if (testFunction(passengers[i])) {
+            return false;
+          }
+        }
+        return true;
       }
 
-      function checkNotPaid(passengers) {
-        if (!passengers.paid) {
-          return true;
-        }
-        return false;
+      function checkNoFlyList(passenger) {
+        return passenger.name === "Dr. Evel";
       }
-      checkNoFlyList(checkNotPaid);
+
+      function checkNotPaid(passenger) {
+        return !passenger.paid;
+      }
     </script>
   </head>
   <body>
