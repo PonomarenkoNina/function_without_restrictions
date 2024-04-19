@@ -71,6 +71,21 @@
       if (!allPaid) {
         console.log("The plane can't take off: not everyone has paid.");
       }
+
+      //Написати функцію, яка виводить ім'я пасажира та інформацію про оплату, викликом console.log.
+      //Передати свою функцію processPassengers, щоб протестувати її.
+      function printPassenger(passenger) {
+        var message = passenger.name;
+        if (passenger.paid === true) {
+          message = message + " has paid";
+        } else {
+          message = message + " has not paid";
+        }
+        console.log(message);
+        return false;
+      }
+
+      processPassengers(passengers, printPassenger);
     </script>
   </head>
   <body>
