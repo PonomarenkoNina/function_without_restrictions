@@ -11,6 +11,14 @@
         { name: "Sue Property", paid: false, ticket: "firstclass" },
         { name: "John Funcall", paid: true, ticket: "coach" },
       ];
+      //Функція, яка перебирає всіх пасажирів і викликає serveCustomer для кожного
+      function servePassengers(passengers) {
+        for (var i = 0; i < passengers.length; i++) {
+          serveCustomer(passengers[i]);
+        }
+      }
+      servePassengers(passengers);
+
       //Виконання операцій стюардесами
       //Якщо пасажир купив білет першого класу - повідомлення вибрати коктейль або вино,другого класу - колу чи воду
       function serveCustomer(passenger) {
