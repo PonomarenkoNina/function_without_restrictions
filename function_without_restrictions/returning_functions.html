@@ -19,17 +19,25 @@
         createDrinkOrder(passenger);
         createDrinkOrder(passenger);
         //Увімкнути кіно
-        createDrinkOrder(passenger);
         //Забрати мусор
       }
 
       //Створюємо нову функцію, в якій вся логіка заказу напоїв
+      //Cтворюємо змінну для зберігання функції, яку ми повертаємо
       function createDrinkOrder(passenger) {
+        var orderFunction;
+        //Якщо пасажир летить першим класом, створюється функція, яка приймає замовлення для першого класу
         if (passenger.ticket === "firstclass") {
-          alert("Would you like a cocktail or wine?");
+          orderFunction = function () {
+            alert("Would you like a cocktail or wine?");
+          };
         } else {
-          alert("Your choice is cola or water.");
+          //Інакше створюється функція для замовлення напоїв другого класу
+          orderFunction = function () {
+            alert("Your choice is cola or water.");
+          };
         }
+        return orderFunction; //Повертаємо функцію
       }
     </script>
   </head>
