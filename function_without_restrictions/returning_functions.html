@@ -14,13 +14,17 @@
       //Виконання операцій стюардесами
       //Якщо пасажир купив білет першого класу - повідомлення вибрати коктейль або вино,другого класу - колу чи воду
       function serveCustomer(passenger) {
+        createDrinkOrder(passenger);
+        //Запропонувати сніданок
+        //Забрати мусор
+      }
+      //Створюємо нову функцію, в якій вся логіка заказу напоїв
+      function createDrinkOrder(passenger) {
         if (passenger.ticket === "firstclass") {
           alert("Would you like a cocktail or wine?");
         } else {
           alert("Your choice is cola or water.");
         }
-        //Запропонувати сніданок
-        //Запропонувати мусор
       }
     </script>
   </head>
