@@ -14,11 +14,13 @@
       //Виконання операцій стюардесами
       //Якщо пасажир купив білет першого класу - повідомлення вибрати коктейль або вино,другого класу - колу чи воду
       function serveCustomer(passenger) {
-        createDrinkOrder(passenger);
+        var getDrinkOrderFunction = createDrinkOrder(passenger);
+        getDrinkOrderFunction();
         //Запропонувати сніданок
-        createDrinkOrder(passenger);
-        createDrinkOrder(passenger);
+        getDrinkOrderFunction();
+        getDrinkOrderFunction();
         //Увімкнути кіно
+        getDrinkOrderFunction();
         //Забрати мусор
       }
 
