@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>First class function exersise</title>
+    <script>
+      //Cтворюємо функцію і присвоюємо її змінній fun
+      function fun(echo) {
+        console.log(echo);
+      }
+
+      fun("hello"); //hello
+
+      function boo(aFunction) {
+        aFunction("boo");
+      }
+
+      boo(fun); //boo
+
+      console.log(fun); //fun(echo) {console.log(echo)}
+
+      fun(boo); //boo(aFunction) {aFunction("boo");}
+
+      var moreFun = fun;
+      moreFun("hello again"); //hello again
+
+      function echoMaker() {
+        return fun;
+      }
+      var bigFun = echoMaker();
+      bigFun("Is there an echo?"); //Is there an echo?
+    </script>
+  </head>
+  <body>
+    <h2>Передача функції іншим функціям</h2>
+  </body>
+</html>
