@@ -16,8 +16,13 @@
       function serveCustomer(passenger) {
         createDrinkOrder(passenger);
         //Запропонувати сніданок
+        createDrinkOrder(passenger);
+        createDrinkOrder(passenger);
+        //Увімкнути кіно
+        createDrinkOrder(passenger);
         //Забрати мусор
       }
+
       //Створюємо нову функцію, в якій вся логіка заказу напоїв
       function createDrinkOrder(passenger) {
         if (passenger.ticket === "firstclass") {
