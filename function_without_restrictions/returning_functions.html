@@ -9,29 +9,8 @@
         { name: "Jane Doloop", paid: true, ticket: "coach" },
         { name: "Dr. Evel", paid: true, ticket: "firstclass" },
         { name: "Sue Property", paid: false, ticket: "firstclass" },
-        { name: "John Funcall", paid: true, ticket: "coach" },
+        { name: "John Funcall", paid: true, ticket: "improved economic" },
       ];
-      //Функція, яка перебирає всіх пасажирів і викликає serveCustomer для кожного
-      function servePassengers(passengers) {
-        for (var i = 0; i < passengers.length; i++) {
-          serveCustomer(passengers[i]);
-        }
-      }
-      servePassengers(passengers);
-
-      //Виконання операцій стюардесами
-      //Якщо пасажир купив білет першого класу - повідомлення вибрати коктейль або вино,другого класу - колу чи воду
-      function serveCustomer(passenger) {
-        var getDrinkOrderFunction = createDrinkOrder(passenger);
-        getDrinkOrderFunction();
-        //Запропонувати сніданок
-        getDrinkOrderFunction();
-        getDrinkOrderFunction();
-        //Увімкнути кіно
-        getDrinkOrderFunction();
-        //Забрати мусор
-      }
-
       //Створюємо нову функцію, в якій вся логіка заказу напоїв
       //Cтворюємо змінну для зберігання функції, яку ми повертаємо
       function createDrinkOrder(passenger) {
@@ -41,6 +20,11 @@
           orderFunction = function () {
             alert("Would you like a cocktail or wine?");
           };
+          //Інакше, якщо функція для замовлення напоїв "покращений економічний"
+        } else if (passenger.ticket === "improved economic") {
+          orderFunction = function () {
+            alert("Would you like a lemonade, water or wine?");
+          };
         } else {
           //Інакше створюється функція для замовлення напоїв другого класу
           orderFunction = function () {
@@ -49,6 +33,49 @@
         }
         return orderFunction; //Повертаємо функцію
       }
+
+      function createDinnerOrder(passenger) {
+        var orderFunction;
+
+        if (passenger.ticket === "firstclass") {
+          orderFunction = function () {
+            alert("Would you like a chicken or pasta?");
+          };
+        } else if (passenger.ticket === "improved economic") {
+          orderFunction = function () {
+            alert("Would you like an appetizers or cheese plate?");
+          };
+        } else {
+          orderFunction = function () {
+            alert("Your choice is nuts or crackers.");
+          };
+        }
+        return orderFunction; //Повертаємо функцію
+      }
+
+      function serveCustomer(passenger) {
+        var getDinnerOrderFunction = createDinnerOrder(passenger);
+        var getDinnerOrderFunction = createDinnerOrder(passenger);
+
+        getDinnerOrderFunction();
+
+        //Запропонувати обід
+        getDinnerOrderFunction();
+
+        getDrinkOrderFunction();
+        getDrinkOrderFunction();
+        //Увімкнути кіно
+        getDrinkOrderFunction();
+        //Забрати мусор
+      }
+
+      //Функція, яка перебирає всіх пасажирів і викликає serveCustomer для кожного
+      function servePassengers(passengers) {
+        for (var i = 0; i < passengers.length; i++) {
+          serveCustomer(passengers[i]);
+        }
+      }
+      servePassengers(passengers);
     </script>
   </head>
   <body>
