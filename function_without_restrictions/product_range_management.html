@@ -30,6 +30,23 @@
       }
       //Для сортування масиву викликаємо метод sort і передаємо функцію
       products.sort(compareSold);
+      //Функція для виводу на консоль JS
+      function printProducts(products) {
+        for (var i = 0; i < products.length; i++) {
+          console.log(
+            "Name: " +
+              products[i].name +
+              ", Calories: " +
+              products[i].calories +
+              ", Color: " +
+              products[i].color +
+              ", Sold: " +
+              products[i].sold
+          );
+        }
+      }
+      products.sort(compareSold); //Сортируємо масив products, використовуючи функцію compareSold
+      printProducts(products); //Виводимо результати
     </script>
   </head>
   <body>
